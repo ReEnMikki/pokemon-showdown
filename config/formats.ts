@@ -19,6 +19,16 @@ The column value will be ignored for repeat sections.
 
 export const Formats: FormatList = [
 
+	{
+		section: "Shadow Fight Arena",
+	},
+	{
+		name: "Standard Rules",
+		desc: 'Shadow Fight Arena... in Pokemon battle style!',
+		ruleset: ['-Nonexistent', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Endless Battle Clause'],
+		// banlist: ['All Pokemon'],
+	},
+
 	// S/V Singles
 	///////////////////////////////////////////////////////////////////
 

@@ -6217,4 +6217,8 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Custom",
 		tier: "Illegal",
 	},
+	kotl1: {
+		isNonstandard: "Custom",
+		tier: "Illegal",
+	},
 };
