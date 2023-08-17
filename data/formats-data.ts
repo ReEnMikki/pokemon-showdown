@@ -6217,7 +6217,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Custom",
 		tier: "Illegal",
 	},
-	kotl1: {
+	ancientoverlord: {
 		isNonstandard: "Custom",
 		tier: "OU",
 	},
