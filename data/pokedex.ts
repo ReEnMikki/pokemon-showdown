@@ -19314,8 +19314,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		gen: 5,
 	},
 	kotl1: {
-		num: 9000,
-		name: "King Of The Legion (Ancient Overlord)",
+		num: -9000,
+		name: "King Of The Legion",
 		types: ["Steel", "Dark"],
 		gender: "M",
 		baseStats: {hp: 80, atk: 100, def: 80, spa: 120, spd: 100, spe: 60},
