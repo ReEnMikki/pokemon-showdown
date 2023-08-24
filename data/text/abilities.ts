@@ -1454,6 +1454,11 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		name: "Run Away",
 		shortDesc: "No competitive use.",
 	},
+	sacrificialpact: {
+		name: "Sacrificial Pact",
+		desc: "This Pokemon's damage of Shadow type moves are multiplied by 1.5 and it loses 1/20 of its maximum HP, rounded down, at the end of each turn.",
+		shortDesc: "Shadow type moves' damage is 1.5x; loses 1/20 max HP per turn.",
+	},
 	sandforce: {
 		name: "Sand Force",
 		desc: "If Sandstorm is active, this Pokemon's Ground-, Rock-, and Steel-type attacks have their power multiplied by 1.3. This Pokemon takes no damage from Sandstorm.",
