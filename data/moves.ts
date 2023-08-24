@@ -1484,6 +1484,67 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "allAdjacentFoes",
 		type: "Flying",
 	},
+	blink: {
+		num: 7400,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Blink",
+		pp: 5,
+		priority: 4,
+		flags: {noassist: 1, failcopycat: 1},
+		stallingMove: true,
+		volatileStatus: 'blink',
+		onPrepareHit(pokemon) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
+		},
+		onHit(pokemon) {
+			this.effectState.attacked = true;
+			pokemon.addVolatile('stall');
+		},
+		condition: {
+			duration: 1,
+			onStart(target) {
+				this.effectState.attacked = false;
+				this.add('-singleturn', target, 'move: Protect');
+			},
+			onTryHitPriority: 3,
+			onTryHit(target, source, move) {
+				if (!move.flags['protect']) {
+					if (['gmaxoneblow', 'gmaxrapidflow'].includes(move.id)) return;
+					if (move.isZ || move.isMax) target.getMoveHitData(move).zBrokeProtect = true;
+					return;
+				}
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				} else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				const lockedmove = source.getVolatile('lockedmove');
+				if (lockedmove) {
+					// Outrage counter is reset
+					if (source.volatiles['lockedmove'].duration === 2) {
+						delete source.volatiles['lockedmove'];
+					}
+				}
+				source.trySetStatus('frz', target);
+				target.heal(target.maxhp * 0.15);
+				return this.NOT_FAIL;
+			},
+			onHit(target, source, move) {
+				source.trySetStatus('frz', target);
+				target.heal(target.maxhp * 0.15);
+			},
+			onEnd(pokemon) {
+				if (!this.effectState.attacked) {
+				pokemon.addVolatile('mustrecharge');
+				}
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Ice",
+	},
 	blizzard: {
 		num: 59,
 		accuracy: 70,
@@ -3342,6 +3403,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "any",
 		type: "Dark",
 		contestType: "Cool",
+	},
+	darkveil: {
+		num: 9602,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Dark Veil",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			def: 1,
+			spd: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Dark",
 	},
 	darkvoid: {
 		num: 464,
@@ -14168,6 +14246,23 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Psychic",
 		contestType: "Cool",
 	},
+	promisedpower: {
+		num: 9600,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Promised Power",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1, dance: 1},
+		boosts: {
+			atk: 1,
+			spa: 1,
+		},
+		secondary: null,
+		target: "self",
+		type: "Shadow",
+	},
 	protect: {
 		num: 182,
 		accuracy: true,
@@ -16385,6 +16480,22 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Ghost",
 		contestType: "Cool",
+	},
+	shadownightmare: {
+		num: 9603,
+		accuracy: 100,
+		basePower: 50,
+		basePowerCallback(pokemon, target, move) {
+			return target.hp === target.maxhp ? move.basePower * 3 : move.basePower;
+		},
+		category: "Special",
+		name: "Shadow Nightmare",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		secondary: null,
+		target: "normal",
+		type: "Fire",
 	},
 	shadowpunch: {
 		num: 325,
@@ -21323,6 +21434,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Water",
 		zMove: {boost: {def: 1}},
 		contestType: "Cute",
+	},
+	witheringpilum: {
+		num: 9601,
+		accuracy: 75,
+		basePower: 40,
+		category: "Physical",
+		name: "Withering Pilum",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		drain: [5, 2],
+		secondary: null,
+		target: "normal",
+		type: "Ghost",
 	},
 	wonderroom: {
 		num: 472,

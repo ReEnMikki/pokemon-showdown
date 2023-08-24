@@ -6211,6 +6211,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	pokestargiantpropo2: {
 		isNonstandard: "Custom",
+		
 		tier: "Illegal",
 	},
 	pokestarufopropu2: {
@@ -6218,7 +6219,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Illegal",
 	},
 	ancientoverlord: {
-		isNonstandard: "Custom",
 		tier: "OU",
 	},
 };

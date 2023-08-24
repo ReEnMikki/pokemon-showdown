@@ -525,6 +525,11 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Has a 30% chance to lower the target's Speed by 1 stage.",
 		shortDesc: "30% chance to lower the foe(s) Speed by 1.",
 	},
+	blink: {
+		name: "Blink",
+		desc: "The user is protected from most attacks made by other Pokemon during this turn, and Pokemon attacking the user become frozen while the user gains 15% HP, otherwise the user must recharge. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
+		shortDesc: "On hit: frozen, user's protected & heals. Otherwise must recharge.",
+	},
 	blizzard: {
 		name: "Blizzard",
 		desc: "Has a 10% chance to freeze the target. If the weather is Snow, this move does not check accuracy.",
@@ -1221,6 +1226,11 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Dark Pulse",
 		desc: "Has a 20% chance to make the target flinch.",
 		shortDesc: "20% chance to make the target flinch.",
+	},
+	darkveil: {
+		name: "Dark Veil",
+		desc: "Raises the user's Defense and Special Defense by 1 stage.",
+		shortDesc: "Raises the user's Defense and Sp. Def by 1.",
 	},
 	darkvoid: {
 		name: "Dark Void",
@@ -4766,6 +4776,11 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "If this move is successful, the user must recharge on the following turn and cannot select a move.",
 		shortDesc: "User cannot move next turn.",
 	},
+	promisedpower: {
+		name: "Promised Power",
+		desc: "Raises the user's Attack and Special Attack by 1 stage.",
+		shortDesc: "Raises the user's Attack and Sp. Attack by 1.",
+	},
 	protect: {
 		name: "Protect",
 		desc: "The user is protected from most attacks made by other Pokemon during this turn. This move has a 1/X chance of being successful, where X starts at 1 and triples each time this move is successfully used. X resets to 1 if this move fails, if the user's last move used is not Baneful Bunker, Detect, Endure, King's Shield, Max Guard, Obstruct, Protect, Quick Guard, Silk Trap, Spiky Shield, or Wide Guard, or if it was one of those moves and the user's protection was broken. Fails if the user moves last this turn.",
@@ -5558,6 +5573,11 @@ export const MovesText: {[k: string]: MoveText} = {
 
 		activate: "  It broke through [TARGET]'s protection!",
 		prepare: "[POKEMON] vanished instantly!",
+	},
+	shadownightmare: {
+		name: "Shadow Nightmare",
+		desc: "Power is tripled when user's HP is full.",
+		shortDesc: "Power is tripled when user's HP is full.",
 	},
 	shadowpunch: {
 		name: "Shadow Punch",
@@ -7332,6 +7352,11 @@ export const MovesText: {[k: string]: MoveText} = {
 		name: "Withdraw",
 		desc: "Raises the user's Defense by 1 stage.",
 		shortDesc: "Raises the user's Defense by 1.",
+	},
+	witheringpilum: {
+		name: "Withering Pilum",
+		desc: "The user recovers 250% the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		shortDesc: "User recovers 250% of the damage dealt.",
 	},
 	wonderroom: {
 		name: "Wonder Room",

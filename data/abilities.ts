@@ -3594,6 +3594,30 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 0,
 		num: 50,
 	},
+	sacrificialpact: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Shadow') {
+				this.debug('Sacrificial Pact boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(spa, attacker, defender, move) {
+			if (move.type === 'Shadow') {
+				this.debug('Sacrificial Pact boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onAfterMoveSecondarySelf(source, target, move) {
+			if (source && source !== target && move && !source.forceSwitchFlag) {
+				this.damage(source.baseMaxhp / 20, source, source);
+			}
+		},
+		name: "Sacrificial Pact",
+		rating: 4,
+		num: 9600,
+	},
 	sandforce: {
 		onBasePowerPriority: 21,
 		onBasePower(basePower, attacker, defender, move) {
