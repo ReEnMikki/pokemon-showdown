@@ -1499,7 +1499,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
 		},
 		onHit(pokemon) {
-			this.effectState.attacked = true;
 			pokemon.addVolatile('stall');
 		},
 		condition: {
@@ -1532,6 +1531,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 				return this.NOT_FAIL;
 			},
 			onHit(target, source, move) {
+				this.effectState.attacked = true;
 				source.trySetStatus('frz', target);
 				target.heal(target.maxhp * 0.15);
 			},
@@ -15287,6 +15287,42 @@ export const Moves: {[moveid: string]: MoveData} = {
 		type: "Normal",
 		contestType: "Beautiful",
 	},
+	removal: {
+		num: 7401,
+		accuracy: true,
+		basePower: 150,
+		category: "Special",
+		name: "Removal",
+		pp: 5,
+		priority: -3,
+		flags: {contact: 1, protect: 1, punch: 1, failmefirst: 1, nosleeptalk: 1, noassist: 1, failcopycat: 1, failinstruct: 1},
+		priorityChargeCallback(pokemon) {
+			pokemon.addVolatile('removal');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.volatiles['removal']?.lostFocus) {
+				this.add('cant', pokemon, 'Removal', 'Removal');
+				return true;
+			}
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Removal');
+			},
+			onHit(pokemon, source, move) {
+				if (move.category !== 'Status') {
+					this.effectState.lostFocus = true;
+				}
+			},
+			onTryAddVolatile(status, pokemon) {
+				if (status.id === 'flinch') return null;
+			},
+		},
+		secondary: null,
+		target: "normal",
+		type: "Shadow",
+	},
 	rest: {
 		num: 156,
 		accuracy: true,
@@ -16495,7 +16531,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		flags: {protect: 1, mirror: 1},
 		secondary: null,
 		target: "normal",
-		type: "Fire",
+		type: "Shadow",
 	},
 	shadowpunch: {
 		num: 325,

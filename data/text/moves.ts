@@ -5150,6 +5150,14 @@ export const MovesText: {[k: string]: MoveText} = {
 		desc: "Has a 10% chance to cause the target to fall asleep. If this move is successful on at least one target and the user is a Meloetta, it changes to Pirouette Forme if it is currently in Aria Forme, or changes to Aria Forme if it is currently in Pirouette Forme. This forme change does not happen if the Meloetta has the Sheer Force Ability. The Pirouette Forme reverts to Aria Forme when Meloetta is not active.",
 		shortDesc: "10% chance to sleep foe(s). Meloetta transforms.",
 	},
+	removal: {
+		name: "Removal",
+		desc: "The user gets interrupted and does nothing if it is hit by a damaging attack this turn before it can execute the move.",
+		shortDesc: "Fails if the user takes damage before it hits.",
+
+		start: "  [POKEMON] is preparing Removal...",
+		cant: "[POKEMON] was interrupted and couldn't perform the attack!",
+	},
 	rest: {
 		name: "Rest",
 		desc: "The user falls asleep for the next two turns and restores all of its HP, curing itself of any non-volatile status condition in the process. Fails if the user has full HP, is already asleep, or if another effect is preventing sleep.",
@@ -7355,7 +7363,7 @@ export const MovesText: {[k: string]: MoveText} = {
 	},
 	witheringpilum: {
 		name: "Withering Pilum",
-		desc: "The user recovers 250% the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down.",
+		desc: "The user recovers 250% the HP lost by the target, rounded half up.",
 		shortDesc: "User recovers 250% of the damage dealt.",
 	},
 	wonderroom: {

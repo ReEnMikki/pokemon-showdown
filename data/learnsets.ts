@@ -94501,6 +94501,7 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			darkveil: ["9L1"],
 			shadownightmare: ["9L1"],
 			blink: ["9L1"],
+			removal: ["9L1"],
 			brutalswing: ["9L1"],
 			closecombat: ["9L1"],
 			irondefense: ["9L1"],
