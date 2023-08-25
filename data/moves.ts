@@ -1504,7 +1504,6 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 1,
 			onStart(target) {
-				this.effectState.attacked = false;
 				this.add('-singleturn', target, 'move: Protect');
 			},
 			onTryHitPriority: 3,
@@ -1526,22 +1525,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 						delete source.volatiles['lockedmove'];
 					}
 				}
-				console.log("source:" + source.name);
-				console.log("target:" + target.name);
-				source.trySetStatus('frz', target);
-				target.heal(target.maxhp * 0.15);
+				if (this.checkMoveMakesContact(move, source, target)) {
+					source.trySetStatus('frz', target);
+				}
 				return this.NOT_FAIL;
 			},
 			onHit(target, source, move) {
-				this.effectState.attacked = true;
-				console.log("source:" + source.name);
-				console.log("target:" + target.name);
-				source.trySetStatus('frz', target);
-				target.heal(target.maxhp * 0.15);
-			},
-			onEnd(pokemon) {
-				if (!this.effectState.attacked) {
-				pokemon.addVolatile('mustrecharge');
+				if (move.isZOrMaxPowered && this.checkMoveMakesContact(move, source, target)) {
+					source.trySetStatus('frz', target);
 				}
 			},
 		},
