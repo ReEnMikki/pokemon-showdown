@@ -1526,12 +1526,16 @@ export const Moves: {[moveid: string]: MoveData} = {
 						delete source.volatiles['lockedmove'];
 					}
 				}
+				console.log("source:" + source.name);
+				console.log("target:" + target.name);
 				source.trySetStatus('frz', target);
 				target.heal(target.maxhp * 0.15);
 				return this.NOT_FAIL;
 			},
 			onHit(target, source, move) {
 				this.effectState.attacked = true;
+				console.log("source:" + source.name);
+				console.log("target:" + target.name);
 				source.trySetStatus('frz', target);
 				target.heal(target.maxhp * 0.15);
 			},
