@@ -1527,12 +1527,14 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 				if (this.checkMoveMakesContact(move, source, target)) {
 					source.trySetStatus('frz', target);
+					target.heal(target.maxhp * 0.15);
 				}
 				return this.NOT_FAIL;
 			},
 			onHit(target, source, move) {
 				if (move.isZOrMaxPowered && this.checkMoveMakesContact(move, source, target)) {
 					source.trySetStatus('frz', target);
+					target.heal(target.maxhp * 0.15);
 				}
 			},
 		},
