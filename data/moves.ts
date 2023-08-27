@@ -1504,6 +1504,7 @@ export const Moves: {[moveid: string]: MoveData} = {
 		condition: {
 			duration: 1,
 			onStart(target) {
+				this.effectState.attacked = false;
 				this.add('-singleturn', target, 'move: Protect');
 			},
 			onTryHitPriority: 3,
@@ -1527,14 +1528,20 @@ export const Moves: {[moveid: string]: MoveData} = {
 				}
 				if (this.checkMoveMakesContact(move, source, target)) {
 					source.trySetStatus('frz', target);
-					target.heal(target.maxhp * 0.15);
+					this.heal(target.maxhp * 0.15, target, target)
 				}
 				return this.NOT_FAIL;
 			},
 			onHit(target, source, move) {
 				if (move.isZOrMaxPowered && this.checkMoveMakesContact(move, source, target)) {
+					this.effectState.attacked = true;
 					source.trySetStatus('frz', target);
-					target.heal(target.maxhp * 0.15);
+					this.heal(target.maxhp * 0.15, target, target)
+				}
+			},
+			onEnd(pokemon) {
+				if (!this.effectState.attacked) {
+				pokemon.addVolatile('mustrecharge');
 				}
 			},
 		},
