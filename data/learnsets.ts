@@ -94494,6 +94494,25 @@ export const Learnsets: {[speciesid: string]: LearnsetData} = {
 			{generation: 5, level: 47, moves: ["darkpulse", "flamethrower", "hyperbeam", "icebeam"]},
 		],
 	},
+	defaulter: {
+		learnset: {
+			promisedpower: ["9L1"],
+			witheringpilum: ["9L1"],
+			darkveil: ["9L1"],
+			shadownightmare: ["9L1"],
+			blink: ["9L1"],
+			removal: ["9L1"],
+			brutalswing: ["9L1"],
+			closecombat: ["9L1"],
+			irondefense: ["9L1"],
+			ironhead: ["9L1"],
+			kingsshield: ["9L1"],
+			nightslash: ["9L1"],
+			sacredsword: ["9L1"],
+			solarblade: ["9L1"],
+			swordsdance: ["9L1"],
+		},
+	},
 	ancientoverlord: {
 		learnset: {
 			promisedpower: ["9L1"],

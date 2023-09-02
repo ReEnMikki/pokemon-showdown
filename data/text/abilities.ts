@@ -1776,6 +1776,11 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 		desc: "This Pokemon's bite-based attacks have their power multiplied by 1.5.",
 		shortDesc: "This Pokemon's bite-based attacks have 1.5x power. Bug Bite is not boosted.",
 	},
+	stubbornasamule: {
+		name: "Stubborn As A Mule",
+		desc: "User increases Defense by 1 stage after taking damage from opponent's attack.",
+		shortDesc: "Increases Defense by 1 stage after damaged by an attack.",
+	},
 	sturdy: {
 		name: "Sturdy",
 		desc: "If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon.",

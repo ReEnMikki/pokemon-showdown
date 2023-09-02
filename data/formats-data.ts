@@ -6218,6 +6218,9 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Custom",
 		tier: "Illegal",
 	},
+	defaulter: {
+		tier: "OU",
+	},
 	ancientoverlord: {
 		tier: "OU",
 	},

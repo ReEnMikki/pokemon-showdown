@@ -1926,6 +1926,14 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: 215,
 	},
+	innatestubbornness: {
+		onStart(pokemon) {
+			this.boost({def: 2}, pokemon);
+		},
+		name: "Innate Stubbornness",
+		rating: 3.5,
+		num: 9001,
+	},
 	innerfocus: {
 		onTryAddVolatile(status, pokemon) {
 			if (status.id === 'flinch') return null;
@@ -4285,6 +4293,14 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Strong Jaw",
 		rating: 3.5,
 		num: 173,
+	},
+	stubbornasamule: {
+		onDamagingHit(damage, target, source, effect) {
+			this.boost({def: 1});
+		},
+		name: "Stubborn As A Mule",
+		rating: 3.5,
+		num: 9000,
 	},
 	sturdy: {
 		onTryHit(pokemon, target, move) {

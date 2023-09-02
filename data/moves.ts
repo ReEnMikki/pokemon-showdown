@@ -11013,6 +11013,27 @@ export const Moves: {[moveid: string]: MoveData} = {
 		zMove: {boost: {spd: 1}},
 		contestType: "Clever",
 	},
+	magmarion: {
+		num: 416,
+		accuracy: 70,
+		basePower: 160,
+		category: "Physical",
+		name: "Magmarion",
+		pp: 5,
+		priority: 0,
+		flags: {recharge: 1, protect: 1, mirror: 1},
+		breaksProtect: true,
+		self: {
+			volatileStatus: 'mustrecharge',
+		},
+		secondary: {
+			chance: 100,
+			status: 'brn',
+		},
+		target: "normal",
+		type: "Fire",
+		contestType: "Tough",
+	},
 	magmastorm: {
 		num: 463,
 		accuracy: 75,
@@ -16619,6 +16640,47 @@ export const Moves: {[moveid: string]: MoveData} = {
 		target: "normal",
 		type: "Psychic",
 		contestType: "Cool",
+	},
+	shatteringsword: {
+		num: 9610,
+		accuracy: 100,
+		basePower: 90,
+		category: "Physical",
+		name: "Shattering Sword",
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		priorityChargeCallback(pokemon) {
+			pokemon.addVolatile('shatteringsword');
+		},
+		beforeMoveCallback(pokemon) {
+			if (pokemon.volatiles['focuspunch']?.lostFocus) {
+				this.add('cant', pokemon, 'Focus Punch', 'Focus Punch');
+				return true;
+			}
+		},
+		condition: {
+			duration: 1,
+			onStart(pokemon) {
+				this.add('-singleturn', pokemon, 'move: Focus Punch');
+			},
+			onHit(pokemon, source, move) {
+				if (move.category !== 'Status') {
+					this.effectState.lostFocus = true;
+				}
+			},
+			onTryAddVolatile(status, pokemon) {
+				if (status.id === 'flinch') return null;
+			},
+		},
+		secondary: {
+			boosts: {
+				def: -1,
+				spd: -1,
+			},
+		},
+		target: "normal",
+		type: "Shadow",
 	},
 	shedtail: {
 		num: 880,
